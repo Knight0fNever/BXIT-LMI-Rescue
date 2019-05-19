@@ -2,7 +2,6 @@ const express = require('express');
 const bp = require('body-parser');
 const fs = require('fs');
 require('dotenv').config();
-const crypt = require('./encrypt');
 
 var app = express();
 const port = 3000;
