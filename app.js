@@ -13,7 +13,7 @@ app.use(express.json());
 
 
 app.get('/seats', (req, res) => {
-  const sentToken = req.body.TOKEN;
+  const sentToken = req.headers['x-access-token'];
   const veriToken = process.env.TOKEN;
   if( sentToken === veriToken) {
     var data = JSON.parse(fs.readFileSync('seats.json').toString());
@@ -29,7 +29,7 @@ app.put('/seat', (req, res) => {
   var data = JSON.parse(fs.readFileSync('seats.json').toString());
   const seat = req.body.seat;
   const newUser = req.body.user;
-  const sentToken = req.body.TOKEN;
+  const sentToken = req.headers['x-access-token'];
   const veriToken = process.env.TOKEN;
   const index = data.findIndex(function (item, i) {
     return item.name === seat
